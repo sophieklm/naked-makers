@@ -3,7 +3,6 @@
 A full-stack collaborative project that aims to visualise the data associated with Makers Academy alumni.
 
 ## User Stories
----------------
 ```
 As a student of Makers Academy (MA)
 So that I can understand the job market I'm about to enter
@@ -30,12 +29,13 @@ So that I can pay it forward to other Makers
 I want to share the my job details
 
 As an alumnus of MA
-I want to be anonymous 
+I want to be anonymous
 So that while I share job details I don't compromise my job
 
 ```
-This was built by:
-*Ana Suciu
-*Erdem Er
-*Robert Jones
-*Sophie Mann
+
+## This was built by:
+- Ana Suciu
+- Erdem Er
+- Robert Jones
+- Sophie Mann
