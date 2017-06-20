@@ -1,0 +1,21 @@
+<h1>Submit your response here</h1>
+
+<%= form_for :response, url:responses_path do |f| %>
+  <p>
+    <% @languages.each do |language| %>
+      <tr>
+        <td><%= check_box_tag 'response[languages][]', language.language, false%></td>
+            <%=language.language%>
+      </tr>
+      <% end %>
+  </p>
+
+  <p>
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

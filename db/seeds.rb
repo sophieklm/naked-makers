@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Response.create(languages: ['Ruby', 'JavaScript', 'Python'], location: 'London')
+Response.create(languages: ['Python'], location: 'London')
+Response.create(languages: ['Scala'], location: 'Berlin')
+Response.create(languages: ['JavaScript'], location: 'Tokyo')
