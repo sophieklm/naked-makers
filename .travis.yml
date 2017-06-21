@@ -4,5 +4,5 @@ rvm:
 script:
 - bundle exec bin/rake db:create
 - bundle exec bin/rake db:migrate
+- bundle exec bin/rake db:seed RAILS_ENV=test
 - bundle exec rspec spec
-
