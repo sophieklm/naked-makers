@@ -1,2 +1,2 @@
-release: bundle exec rake db:setup
+release: bundle exec rake db:migrate db:seed
 web: bundle exec bin/rails server
