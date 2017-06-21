@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Language.create(name:'Ruby')
+Language.create(name:'Python')
