@@ -12,4 +12,9 @@ feature 'user can submit location & langauge' do
     visit 'responses/new'
     expect(page).to have_content('Languages:')
   end
+
+  scenario 'user can select from a list of languages' do
+    visit 'responses/new'
+    check 'ruby'
+  end
 end
