@@ -6,6 +6,7 @@ require_relative 'config/application'
 Rails.application.load_tasks
 
 # run task: bundle exec rake deploy:staging:promote
+# run task: bundle exec rake deploy:production:promote
 
 staging_app     = 'naked-makers-staging'
 production_app  = 'naked-makers'
