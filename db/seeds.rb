@@ -8,3 +8,5 @@
 
 Language.create(name:'Ruby')
 Language.create(name:'Python')
+Language.create(name:'JavaScript')
+Language.create(name:'Other')
