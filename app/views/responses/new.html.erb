@@ -2,16 +2,17 @@
 
 <%= form_for :response, url:responses_path do |f| %>
   <p>
-    <% @languages.each do |language| %>
+    <h3> What languages do you use? </h3>
+    <% @languages.sort.each do |language| %>
       <tr>
         <td><%= check_box_tag 'response[languages][]', language.language, false%></td>
-            <%=language.language%>
+            <%= language.language %></br>
       </tr>
       <% end %>
   </p>
 
   <p>
-    <%= f.label :location %><br>
+    <%= f.label :location, ('<h3>Where are you?</h3>').html_safe %>
     <%= f.text_field :location %>
   </p>
 
