@@ -3,7 +3,9 @@ class ResponsesController < ApplicationController
   def new
     @languages = Language.all
   end
-
+  def index
+    @responses = Response.all
+  end
   def create
     @response = Response.new(response_params)
     @response.save
