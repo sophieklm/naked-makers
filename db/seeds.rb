@@ -6,5 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Language.create(name:'Ruby')
-Language.create(name:'Python')
+def languages
+  Language.create(name: 'Ruby')
+  Language.create(name: 'Python')
+  Language.create(name: 'JavaScript')
+  Language.create(name: 'Other')
+end
+
+case Rails.env
+when 'test'
+  languages
+when 'development'
+  languages
+when 'production'
+  languages
+end
