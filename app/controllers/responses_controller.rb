@@ -8,6 +8,7 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     @response.save
     redirect_to root_url
+    flash[:notice] = "Data submitted"
   end
 
   private
