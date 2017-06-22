@@ -7,17 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 def languages
-  Language.create(name:'Ruby')
-  Language.create(name:'Python')
-  Language.create(name:'JavaScript')
-  Language.create(name:'Other')
+  Language.create(name: 'Ruby')
+  Language.create(name: 'Python')
+  Language.create(name: 'JavaScript')
+  Language.create(name: 'Other')
 end
 
 case Rails.env
-when "test"
+when 'test'
   languages
-when "development"
+when 'development'
   languages
-when "production"
+when 'production'
   languages
 end
