@@ -12,8 +12,8 @@ $.ajax({
        });
 
 function draw(data) {
-    var names = data.names;
-    var values = data.values;
+    // var names = data.names;
+    // var values = data.values;
     var color = d3.scale.category20b();
     var width = 420,
         barHeight = 20;
@@ -39,14 +39,7 @@ function draw(data) {
         .style("fill", function (d) {
                    return color(d);
                });
-
-    bar.append("text")
-    	  .attr("class","label")
-    	  .attr("x", (function(d) { return d.names; }))
-    	  .attr("y", function(d) { return d.names; })
-    	  .attr("dy", ".75em")
-    	  .text(function(d) { return d.values; });
-
+               
     bar.append("text")
         .attr("x", function (d) {
                   return x(d) - 10;
