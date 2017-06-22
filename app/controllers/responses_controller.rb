@@ -7,7 +7,7 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     @response.save
-    redirect_to responses_path
+    redirect_to root_url
   end
 
   private

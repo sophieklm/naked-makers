@@ -14,11 +14,11 @@ feature 'user can submit location & langauge' do
   end
   scenario 'user can select from a list of languages' do
     visit 'responses/new'
-    check '1'
+    check('response_languages_', match: :first)
   end
-  scenario 'user can select multiple languages' do
+  scenario 'user can select multiple languages' do skip
     visit 'responses/new'
-    check '1'
-    check '2'
+    check('response_languages_', match: :first)
+    find('a', text: 'Berlin', match: :prefer_exact)
   end
 end
