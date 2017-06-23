@@ -2,7 +2,7 @@ feature 'user can submit location & langauge' do
   scenario 'user finds the form' do
     visit '/'
     click_on 'Submit Data'
-    expect(page).to have_content('Submit your data here:')
+    expect(page).to have_content('Submit your data here')
   end
   scenario 'user can see a location field' do
     visit 'responses/new'

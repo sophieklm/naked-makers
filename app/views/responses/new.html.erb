@@ -1,14 +1,18 @@
 <%= render "partials/header" %>
 <div class="container">
   <div class="jumbotron text-center">
-    <h2>Submit your data here:</h2>
+    <h1>Submit your data here</h1>
     <%= form_for :response, url: {action: "create"} do |f| %>
     <div>
-      <p><%= f.label "Location:" %></p>
-      <%= f.text_field :location, class: "form-control" %>
+      <h3>Where are you?</h3>
+      <%= f.label "Country:" %><br/>
+      <%= f.select :country, options_for_select(@countries.values.sort), prompt:"Select Country", class: "form-control" %><br/>
+      <%= f.label "Location:" %><br/>
+      <%= f.select :location, options_for_select(@cities), prompt:"Select City", class: "form-control" %>
     </div><br/>
     <div>
-      <p><%= f.label "Languages:" %></p>
+      <h3>What languages do you use?</h3>
+      <%= f.label "Languages:" %>
       <% @languages.each do |language| %>
       <%= language.name %>
       <%= check_box_tag 'response[languages][]', language.name, false, id: language.id %><br/>
@@ -19,3 +23,25 @@
     <% end %>
   </div>
 </div>
+
+<select name="state">
+<% CS.states(:us).each do |key, value| %>
+<option value="<%= key %>"><%= value %></option>
+<% end %>
+</select>
+
+<select name="city">
+</select>
+
+<script>
+$('select[name="state"]').change(function () {
+  var input_state = $(this);
+  $.getJSON('/cities/' + $(this).val(), function (data) {
+    input_state.empty();
+    $.each(data, function (i) {
+      var opt = '<option value='+ i +'>' + i + '</option>';
+      input_state.append(opt);
+    });
+  });
+});
+</script>
