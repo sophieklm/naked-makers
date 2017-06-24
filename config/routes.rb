@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :responses do
-    resources :locations
+    resources :locations, to: 'locations#create'
   end
 
 end

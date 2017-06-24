@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe LocationController, type: :controller do
+RSpec.describe LocationsController, type: :controller do
 
 end

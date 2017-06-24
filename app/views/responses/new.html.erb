@@ -4,11 +4,11 @@
     <h1>Submit your data here</h1>
     <%= form_for :response, url: {action: "create"} do |f| %>
     <div>
-      <h3>Where are you?</h3>
-      <%= f.label "Location:" %><br/>
-      <%= f.text_field :location, class: "form-control" %>
-    </div><br/>
-    <div>
+      <div>
+        <h3>Where are you?</h3>
+        <%= f.label "Location:" %><br/>
+        <%= f.text_field :city, class: "form-control" %>
+      </div><br/>
       <h3>What languages do you use?</h3>
       <%= f.label "Languages:" %><br/>
       <% @languages.each do |language| %>
