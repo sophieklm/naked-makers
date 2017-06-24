@@ -6,7 +6,7 @@ feature 'user can submit location & langauge' do
   end
   scenario 'user can see a location field' do
     visit 'responses/new'
-    expect(page).to have_content('Location:')
+    expect(page).to have_content('City:')
   end
   scenario 'user can see a languages field' do
     visit 'responses/new'
