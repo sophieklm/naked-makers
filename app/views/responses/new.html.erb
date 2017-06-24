@@ -13,7 +13,7 @@
       <%= f.label "Languages:" %><br/>
       <% @languages.each do |language| %>
       <%= language.name %>
-      <%= check_box_tag 'response[languages][]', language.name, false, id: language.id %><br/>
+      <%= check_box_tag 'response[languages][]', language.id, false, id: language.id %><br/>
       <% end %>
     </div>
     <br/>
