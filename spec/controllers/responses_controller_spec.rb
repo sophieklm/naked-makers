@@ -16,4 +16,16 @@ RSpec.describe ResponsesController, type: :controller do
     end
   end
 
+  describe "Post #responses/create" do
+    it "creates a new response" do
+      expect { FactoryGirl.create(:response) }.to change(Response, :count).by(1)
+    end
+  end
+
+  describe "Post #responses/create" do
+    it "creates a new response" do
+      expect { post :create, params: { response: { city: "", languages: [] }} }.to change(Response, :count).by(0)
+    end
+  end
+  
 end
