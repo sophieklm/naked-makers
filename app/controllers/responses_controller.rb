@@ -1,5 +1,4 @@
 class ResponsesController < ApplicationController
-
   def new
     @languages = Language.all
   end
@@ -37,5 +36,4 @@ class ResponsesController < ApplicationController
   def create_response_location(response_id, city)
     redirect_to response_locations_path(response_id: response_id, city: city)
   end
-
 end

@@ -11,7 +11,7 @@ RSpec.describe ResponsesController, type: :controller do
 
   describe "Post #responses/create" do
     it "returns http redirect" do
-      post :create, params: { response: { city: "London", languages: ["Ruby"] }}
+      post :create, params: { response: { city: "London", languages: ["Ruby"] } }
       expect(response).to have_http_status(302)
     end
   end
