@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :responses do
+  resources :responses, only: [:new, :create] do
     resources :locations, to: 'locations#create'
     resources :response_languages
   end
+  get '*path' => redirect('/')
 end
