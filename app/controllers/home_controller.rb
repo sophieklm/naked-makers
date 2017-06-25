@@ -23,7 +23,7 @@ class HomeController < ApplicationController
   def create_grouped_hash(model, group_by)
     data = []
     group_count(model, group_by).each do |key, value|
-      data << { city: key, count: value }
+      data << { name: key, count: value }
     end
     return data
   end
