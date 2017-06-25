@@ -28,8 +28,8 @@ class ResponsesController < ApplicationController
     end
   end
 
-  def create_language_join_response_path(language, response_id)
-    @response_language = ResponseLanguage.new(language_id: language, response_id: response_id)
+  def create_language_join_response_path(language_id, response_id)
+    @response_language = ResponseLanguage.new(language_id: language_id, response_id: response_id)
     @response_language.save
   end
 
