@@ -1,14 +1,16 @@
 <%= render "partials/header" %>
 <div class="container">
   <div class="jumbotron text-center">
-    <h2>Submit your data here:</h2>
+    <h1>Submit your data here</h1>
     <%= form_for :response, url: {action: "create"} do |f| %>
     <div>
-      <p><%= f.label "Location:" %></p>
-      <%= f.text_field :location, class: "form-control" %>
-    </div><br/>
-    <div>
-      <p><%= f.label "Languages:" %></p>
+      <div>
+        <h3>Where are you?</h3>
+        <%= f.label "City:" %><br/>
+        <%= f.text_field :city, class: "form-control" %>
+      </div><br/>
+      <h3>What languages do you use?</h3>
+      <%= f.label "Languages:" %><br/>
       <% @languages.each do |language| %>
       <%= language.name %>
       <%= check_box_tag 'response[languages][]', language.name, false, id: language.id %><br/>

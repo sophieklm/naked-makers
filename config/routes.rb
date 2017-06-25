@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :responses
+  resources :responses do
+    resources :locations, to: 'locations#create'
+  end
 
 end

@@ -10,6 +10,17 @@ def languages
   Language.create(name: 'Ruby')
   Language.create(name: 'Python')
   Language.create(name: 'JavaScript')
+  Language.create(name: 'Scala')
+  Language.create(name: 'SQL')
+  Language.create(name: 'C')
+  Language.create(name: 'C++')
+  Language.create(name: 'C#')
+  Language.create(name: 'PHP')
+  Language.create(name: 'Java')
+  Language.create(name: 'Perl')
+  Language.create(name: 'Swift')
+  Language.create(name: 'VB .NET')
+  Language.create(name: 'Go')
   Language.create(name: 'Other')
 end
 
