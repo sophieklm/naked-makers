@@ -7,8 +7,7 @@
       { name: 'london', count: 3000 },
       { name: 'manchester', count: 500 },
       { name: 'bristol', count: 230 },
-      { name: 'Paris', count: 100 },
-      { name: 'Montreal', count: 50}
+      { name: 'Paris', count: 100 }
     ]
   }
 </script>
@@ -33,16 +32,16 @@
 <script>
   var locations = locationJSONdata.locations;
   var svg = d3.select("svg");
+
   var circle = svg.selectAll("circle")
       .data(locations.map(function(location) {
         return location.count;
-      }))
+      }), function(d) { return d; })
       .enter().append("circle")
       .attr("cy", 80)
       .attr("cx", function(d,i) { return (i+1) * 100 + 30; })
       .attr("r", function(d) { return Math.sqrt(d); })
-      .style("fill", "green");
+      .style("fill", "green")
 
   circle.exit().remove();
-
 </script>
