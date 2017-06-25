@@ -5,17 +5,15 @@ class ResponsesController < ApplicationController
   end
 
   def create
+    if !response_params[:languages] || response_params[:city] == ""
+      flash[:notice] = "Please complete both fields"
+      redirect_to new_response_path
+      return
+    end
     @response ||= Response.new
     @response.save
-    if response_params[:languages]
-      create_languages
-    end
-    if response_params[:city] != ""
-      create_response_location(@response.id, response_params[:city])
-    else
-      redirect_to root_url
-      flash[:notice] = "Data submitted"
-    end
+    create_languages
+    create_response_location(@response.id, response_params[:city])
   end
 
   private
