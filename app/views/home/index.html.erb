@@ -33,6 +33,7 @@
 
 <script>
 var locations = locationJSONdata.locations;
+var color = d3.scaleOrdinal(d3.schemeCategory20);
 var width = 400,
     height = 300;
 
@@ -42,7 +43,7 @@ var canvas = d3.select('body').append('svg')
        .append ('g')
            .attr('transform', 'translate(50, 50)');
 
-var pack = d3.pack()
+var pack = d3.pack(locations)
     .size(width, height - 50)
     .padding(10);
 
@@ -52,17 +53,25 @@ var pack = d3.pack()
 
 var node = canvas.selectAll(".node")
           .data(pack(nodes).descendants())
-          .enter();
-          // .filter(function)(d){
-          //     return  !d.locations
-          // })
-          // .append("g")
-          // .attr("class", "node")
-          // .attr("transform", function(d) {
-          //     return "tra"
-          // })
+          .enter()
+          .filter(function(d){
+              return  !d.locations
+          })
+          .append("g")
+          .attr("class", "node")
+          .attr("transform", function(d) {
+              return "translate(" + 200 + "," + 150 + ")";
+          });
 
- console.log(nodes);
+  node.append('circle')
+    .attr('r', 35)
+    .style('fill', 'grey');
+
+  node.append("title")
+        .text(function(d) {
+            return d.locations.name + ": " + d.locations.count;
+           });
+
 
     //  nodes.data(locations.map(function(location) { return location.count; }), function(d) { return d; })
      //
