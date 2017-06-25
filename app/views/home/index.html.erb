@@ -46,7 +46,22 @@ var pack = d3.pack()
     .size(width, height - 50)
     .padding(10);
 
- var nodes = pack.nodes(locations);
+ var nodes = d3.hierarchy(locations)
+            .sum(function(d) {return
+            d.count; });
+
+var node = canvas.selectAll(".node")
+          .data(pack(nodes).descendants())
+          .enter();
+          // .filter(function)(d){
+          //     return  !d.locations
+          // })
+          // .append("g")
+          // .attr("class", "node")
+          // .attr("transform", function(d) {
+          //     return "tra"
+          // })
+
  console.log(nodes);
 
     //  nodes.data(locations.map(function(location) { return location.count; }), function(d) { return d; })
