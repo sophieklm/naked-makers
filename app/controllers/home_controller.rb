@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    create_language_hash(ResponseLanguage, :language_id)
   end
 
   def language_data
@@ -36,7 +35,6 @@ class HomeController < ApplicationController
       key = @languages.find_by(id: key).name
       data << { name: key, count: value }
     end
-    puts data
     return data
   end
 
