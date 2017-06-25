@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621164312) do
+ActiveRecord::Schema.define(version: 20170624172302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,28 @@ ActiveRecord::Schema.define(version: 20170621164312) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "responses", force: :cascade do |t|
-    t.text "languages", default: [], array: true
-    t.text "location"
+  create_table "locations", force: :cascade do |t|
+    t.float "latitude"
+    t.float "longitude"
+    t.string "country"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "response_id"
+    t.index ["response_id"], name: "index_locations_on_response_id"
+  end
+
+  create_table "response_languages", force: :cascade do |t|
+    t.integer "response_id"
+    t.integer "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "locations", "responses"
 end
