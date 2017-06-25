@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
+  get 'home/location_data', :defaults => { :format => 'json' }
+  get 'home/language_data', :defaults => { :format => 'json' }
 
   root to: "home#index"
 

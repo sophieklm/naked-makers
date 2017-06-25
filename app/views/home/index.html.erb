@@ -1,17 +1,6 @@
 <%= render "partials/header" %>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-  var locationJSONdata = {
-    locations : [
-      { name: 'london', count: 3000 },
-      { name: 'manchester', count: 500 },
-      { name: 'bristol', count: 230 },
-      { name: 'Paris', count: 100 },
-      { name: 'Montreal', count: 50}
-    ]
-  }
-</script>
 
 <div class="container">
   <div class="jumbotron text-center">
@@ -31,7 +20,20 @@
 </div>
 
 <script>
-  var locations = locationJSONdata.locations;
+$.ajax({
+           type: "GET",
+           contentType: "application/json; charset=utf-8",
+           url: 'home/location_data',
+           dataType: 'json',
+           success: function (data) {
+               draw(data);
+           },
+           error: function (result) {
+               error();
+           }
+       });
+ function draw(data) {
+  var locations = data;
   var svg = d3.select("svg");
   var circle = svg.selectAll("circle")
       .data(locations.map(function(location) {
@@ -44,5 +46,10 @@
       .style("fill", "green");
 
   circle.exit().remove();
+  }
+
+  function error() {
+    console.log("error")
+  }
 
 </script>
