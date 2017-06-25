@@ -13,15 +13,6 @@
   }
 </script>
 
-<!-- <canvas id="canvas" width="300" height="300"></canvas>
-<script>
-  var canvas = document.querySelector("canvas");
-  var context = canvas.getContext("2d");
-  context.fillStyle = "red";
-  context.fillRect(0, 0, 300, 300);
-</script> -->
-
-
 <div class="container">
   <div class="jumbotron text-center">
     <h1>Naked Makers</h1>
@@ -29,28 +20,29 @@
       <div class = 'alert alert-success'><%= flash[:notice]%></div>
     <%end%>
     <div class="text-center">
-    <form action = '/responses/new'>
-      <input type='submit' value = 'Submit Data' class="btn btn-primary">
-    </form>
-  </div>
+      <form action = '/responses/new'>
+        <input type='submit' value = 'Submit Data' class="btn btn-primary">
+      </form>
+    </div>
+    <h2>the graph</h2>
+    <svg width="720" height="200">
+    </svg>
 </div>
 </div>
-
-<h2>the graph</h2>
-<svg width="720" height="200">
-</svg>
 
 <script>
   var locations = locationJSONdata.locations;
   var svg = d3.select("svg");
   var circle = svg.selectAll("circle")
       .data(locations.map(function(location) {
-     return location.count;
-     }));
-  var circleEnter = circle.enter().append("circle");
-  circleEnter.attr("cy", 80);
-  circleEnter.attr("cx", function(d,i) { return (i+1) * 100 + 30; });
-  circleEnter.attr("r", function(d) { return Math.sqrt(d); });
-  circleEnter.style("fill", "green");
+        return location.count;
+      }))
+      .enter().append("circle")
+      .attr("cy", 80)
+      .attr("cx", function(d,i) { return (i+1) * 100 + 30; })
+      .attr("r", function(d) { return Math.sqrt(d); })
+      .style("fill", "green");
+
+  circle.exit().remove();
 
 </script>
