@@ -7,7 +7,8 @@
       { name: 'london', count: 3000 },
       { name: 'manchester', count: 500 },
       { name: 'bristol', count: 230 },
-      { name: 'Paris', count: 50 }
+      { name: 'Paris', count: 100 },
+      { name: 'Montreal', count: 50}
     ]
   }
 </script>
@@ -20,30 +21,6 @@
   context.fillRect(0, 0, 300, 300);
 </script> -->
 
-<svg width="720" height="120">
-  <circle cx="40" cy="40" r="10"></circle>
-  <circle cx="80" cy="40" r="10"></circle>
-  <circle cx="120" cy="40" r="10"></circle>
-</svg>
-
-<script>
-  var locations = locationJSONdata.locations;
-  var svg = d3.select("svg");
-  var circle = svg.selectAll("circle");
-  circle.data(locations.map(function(location) {
-    return location.count;
-  }));
-
-  var circleEnter = circle.enter().append("circle");
-  circleEnter.attr("cy", 60);
-  circleEnter.attr("cx", function(d,i) { return i * 100 + 30; });
-  circleEnter.attr("r", function(d) { return Math.sqrt(d); });
-
-
-  // circle.style("fill", "green");
-  // circle.attr("r", function(d) { return Math.sqrt(d); });
-  // circle.attr("cx", function(d, i) { return i * 100 + 30; });
-</script>
 
 <div class="container">
   <div class="jumbotron text-center">
@@ -58,3 +35,22 @@
   </div>
 </div>
 </div>
+
+<h2>the graph</h2>
+<svg width="720" height="200">
+</svg>
+
+<script>
+  var locations = locationJSONdata.locations;
+  var svg = d3.select("svg");
+  var circle = svg.selectAll("circle")
+      .data(locations.map(function(location) {
+     return location.count;
+     }));
+  var circleEnter = circle.enter().append("circle");
+  circleEnter.attr("cy", 80);
+  circleEnter.attr("cx", function(d,i) { return (i+1) * 100 + 30; });
+  circleEnter.attr("r", function(d) { return Math.sqrt(d); });
+  circleEnter.style("fill", "green");
+
+</script>
