@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :responses do
     resources :locations, to: 'locations#create'
+    resources :response_languages
   end
 
 end

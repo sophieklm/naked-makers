@@ -11,9 +11,21 @@ RSpec.describe ResponsesController, type: :controller do
 
   describe "Post #responses/create" do
     it "returns http redirect" do
-      post :create, params: { response: { location: "London", languages: ["Ruby"] }}
+      post :create, params: { response: { city: "London", languages: ["Ruby"] }}
       expect(response).to have_http_status(302)
     end
   end
 
+  describe "Post #responses/create" do
+    it "creates a new response" do
+      expect { FactoryGirl.create(:response) }.to change(Response, :count).by(1)
+    end
+  end
+
+  describe "Post #responses/create" do
+    it "creates a new response" do
+      expect { post :create, params: { response: { city: "", languages: [] }} }.to change(Response, :count).by(0)
+    end
+  end
+  
 end

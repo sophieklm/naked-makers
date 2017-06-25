@@ -21,4 +21,9 @@ feature 'user can submit location & langauge' do
     check('1')
     check('2')
   end
+  scenario 'user cannot submit null data' do
+    visit 'responses/new'
+    click_on 'Submit Response'
+    expect(page).to have_content('Please complete both fields')
+  end
 end

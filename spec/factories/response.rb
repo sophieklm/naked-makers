@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :response do
-    languages ["Ruby", "Python"]
+    languages = [1,2]
   end
 end

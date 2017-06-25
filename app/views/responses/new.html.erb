@@ -2,6 +2,9 @@
 <div class="container">
   <div class="jumbotron text-center">
     <h1>Submit your data here</h1>
+    <% if flash[:notice] %>
+      <div class = 'alert alert-danger'><%= flash[:notice]%></div>
+    <%end%>
     <%= form_for :response, url: {action: "create"} do |f| %>
     <div>
       <div>
@@ -13,7 +16,7 @@
       <%= f.label "Languages:" %><br/>
       <% @languages.each do |language| %>
       <%= language.name %>
-      <%= check_box_tag 'response[languages][]', language.name, false, id: language.id %><br/>
+      <%= check_box_tag 'response[languages][]', language.id, false, id: language.id %><br/>
       <% end %>
     </div>
     <br/>
