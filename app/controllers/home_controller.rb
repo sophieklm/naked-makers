@@ -23,7 +23,7 @@ class HomeController < ApplicationController
   def create_location_hash(model, group_by)
     data = []
     group_count(model, group_by).each do |key, value|
-      data << { name: key, count: value }
+      data << { name: key.capitalize, count: value }
     end
     return data
   end
