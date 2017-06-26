@@ -47,9 +47,9 @@ $.ajax({
           .attr("class", "bubble");
 
   var nodes = d3.hierarchy(dataset)
-          .sum((function(d) {
+          .sum(function(d) {
             return d.count;
-          }))
+          });
 
   var node = svg.selectAll(".node")
           .data(bubble(nodes).descendants())
@@ -73,7 +73,8 @@ $.ajax({
               return d.r;
           })
           .style("fill", (function(d) {
-              return color(d.name);
+              console.log(d);
+              return color(d.value);
           }));
 
   node.append("text")
