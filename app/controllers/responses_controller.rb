@@ -36,4 +36,16 @@ class ResponsesController < ApplicationController
     redirect_to response_locations_path(response_id: response_id, city: city)
   end
 
+  def self.link_language
+    @response_languages = ResponseLanguage.all
+    @languages = Language.all
+    output = []
+    @language_pair = [@languages[0], @languages[1]]
+    output << @response_languages.where(language_id: [@language_pair[0].id, @language_pair[1].id]).group(:response_id).count
+    sum = 0
+    output[0].each {|output| output[1] > 1 ? sum += 1 : nil}
+    puts sum
+    return sum
+  end
+
 end
