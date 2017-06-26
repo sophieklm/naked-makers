@@ -48,6 +48,7 @@ $.ajax({
 
   var nodes = d3.hierarchy(dataset)
           .sum(function(d) {
+            console.log(d);
             return d.count;
           });
 
@@ -65,15 +66,15 @@ $.ajax({
 
   node.append("title")
           .text((function(d) {
-              return d.name + ": " + d.count;
+              return d.data.name + ": " + d.data.count;
           }));
 
   node.append("circle")
           .attr("r", function(d) {
+              console.log(d);
               return d.r;
           })
           .style("fill", (function(d) {
-              console.log(d);
               return color(d.value);
           }));
 
