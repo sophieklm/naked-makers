@@ -52,7 +52,8 @@ var pack = d3.pack(locations)
     .padding(1.5);
 
 var nodes = d3.hierarchy(locations)
-            .sum(function(d) { return d.count; })
+            .sum(function(d) {
+              return d.count; })
 
 var node = svg.selectAll(".node")
           .data(pack(nodes).descendants())
@@ -67,43 +68,27 @@ var node = svg.selectAll(".node")
           });
 
   node.append('circle')
-    .attr('r', '40' )
-    .style('fill', 'green');
+    .attr('r', function(d) {
+      return d.r;
+    })
+    .style('fill', function(d) {
+      return color(d.value);
+    });
 
-  // node.append("title")
-  //       .text(function(d) {
-  //           return 'something';
-  //          });
+  node.append("title")
+        .text(function(d) {
+            return d.data.name + ": " + d.data.count;
+           });
+
+  node.append("text")
+          .attr("dy", ".3em")
+          .style("text-anchor", "middle")
+          .text(function(d) {
+            return d.data.name + ": " + d.data.count;
+          })
 
 d3.select(self.frameElement)
     .style("height", diameter + "px");
 
-    //  nodes.data(locations.map(function(location) { return location.count; }), function(d) { return d; })
-     //
-    //   var node = canvas.selectAll('node')
-    //      .data(nodes)
-    //      .enter()
-    //      .append('g')
-    //            .attr('class', 'node')
-    //            .attr('transform', 10);
-    //      node.append('circle')
-    //        .attr('r', 10 )
-    //        .attr('fill', 'steelblue')
-
-
-  // var locations = locationJSONdata.locations;
-  // var svg = d3.select("svg");
-  //
-  // var circle = svg.selectAll("circle")
-  //     .data(locations.map(function(location) {
-  //       return location.count;
-  //     }), function(d) { return d; })
-  //     .enter().append("circle")
-  //     .attr("cy", 80)
-  //     .attr("cx", function(d,i) { return (i+1) * 100 + 30; })
-  //     .attr("r", function(d) { return Math.sqrt(d); })
-  //     .style("fill", "green")
-  //
-  // circle.exit().remove();
 </script>
 </body>
