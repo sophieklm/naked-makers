@@ -4,7 +4,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
   var locationJSONdata = {
-    locations : [
+    children : [
       { name: 'london', count: 3000 },
       { name: 'manchester', count: 500 },
       { name: 'bristol', count: 230 },
@@ -27,51 +27,56 @@
       </form>
     </div>
     <h2>the graph</h2>
+    <div class ='chart'></div>
 </div>
 </div>
 
 
 <script>
-var locations = locationJSONdata.locations;
+var locations = locationJSONdata;
 var color = d3.scaleOrdinal(d3.schemeCategory20);
-var width = 400,
+var diameter = 600;
+    width = 400;
     height = 300;
 
-var canvas = d3.select('body').append('svg')
-       .attr('width', width)
-       .attr('height', height)
-       .append ('g')
-           .attr('transform', 'translate(50, 50)');
+var svg = d3.select('.chart')
+       .append('svg')
+       .attr('width', diameter)
+       .attr('height', diameter)
+       .attr('class', 'pack')
+      //  .append ('g')
+      //      .attr('transform', 'translate(50, 50)');
 
 var pack = d3.pack(locations)
-    .size(width, height - 50)
-    .padding(10);
+    .size([diameter,diameter])
+    .padding(1.5);
 
- var nodes = d3.hierarchy(locations)
-            .sum(function(d) {return
-            d.count; });
+var nodes = d3.hierarchy(locations)
+            .sum(function(d) { return d.count; })
 
-var node = canvas.selectAll(".node")
+var node = svg.selectAll(".node")
           .data(pack(nodes).descendants())
           .enter()
           .filter(function(d){
-              return  !d.locations
+              return  !d.children
           })
           .append("g")
           .attr("class", "node")
           .attr("transform", function(d) {
-              return "translate(" + 200 + "," + 150 + ")";
+              return "translate(" + d.x + "," + d.y + ")";
           });
 
   node.append('circle')
-    .attr('r', 35)
-    .style('fill', 'grey');
+    .attr('r', '40' )
+    .style('fill', 'green');
 
-  node.append("title")
-        .text(function(d) {
-            return d.locations.name + ": " + d.locations.count;
-           });
+  // node.append("title")
+  //       .text(function(d) {
+  //           return 'something';
+  //          });
 
+d3.select(self.frameElement)
+    .style("height", diameter + "px");
 
     //  nodes.data(locations.map(function(location) { return location.count; }), function(d) { return d; })
      //
