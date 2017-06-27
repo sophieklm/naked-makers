@@ -13,7 +13,7 @@ class ResponsesController < ApplicationController
     @response ||= Response.new
     @response.save
     create_languages
-    create_response_location(@response.id, response_params[:city])
+    create_response_location(@response.id, response_params[:city], response_params[:languages])
   end
 
   private
@@ -32,8 +32,8 @@ class ResponsesController < ApplicationController
     @response_language.save
   end
 
-  def create_response_location(response_id, city)
-    redirect_to response_locations_path(response_id: response_id, city: city)
+  def create_response_location(response_id, city, languages)
+    redirect_to response_locations_path(response_id: response_id, city: city, languages: languages)
   end
 
 end
