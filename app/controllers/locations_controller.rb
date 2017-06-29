@@ -17,9 +17,9 @@ class LocationsController < ApplicationController
 
   private
 
-  def location_params
-    params.require(:location).permit(:response_id, :city, languages: [])
-  end
+  # def location_params
+  #   params.require(:location).permit(:response_id, :city, languages: [])
+  # end
 
   def create_languages
     params[:languages].each do |language|

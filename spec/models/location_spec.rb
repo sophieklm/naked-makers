@@ -7,6 +7,4 @@ RSpec.describe Location, type: :model do
     expect(location.city).to eq("London")
   end
 
-  it { should belong_to(:response) }
-
 end

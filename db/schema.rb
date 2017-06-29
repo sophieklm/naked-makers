@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627163151) do
+ActiveRecord::Schema.define(version: 20170629165714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,6 @@ ActiveRecord::Schema.define(version: 20170627163151) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "response_id"
-    t.index ["response_id"], name: "index_locations_on_response_id"
   end
 
   create_table "response_languages", force: :cascade do |t|
@@ -58,5 +56,4 @@ ActiveRecord::Schema.define(version: 20170627163151) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "locations", "responses"
 end
