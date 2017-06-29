@@ -1,16 +1,16 @@
 feature 'user can submit location & langauge' do
   scenario 'user finds the form' do
     visit '/'
-    click_on 'Submit Data'
-    expect(page).to have_content('Submit your data here')
+    click_on 'Contribute'
+    expect(page).to have_content('Submit a response here')
   end
   scenario 'user can see a location field' do
     visit 'responses/new'
-    expect(page).to have_content('City:')
+    expect(page).to have_content('Where are you?')
   end
   scenario 'user can see a languages field' do
     visit 'responses/new'
-    expect(page).to have_content('Languages:')
+    expect(page).to have_content('What languages do you use?')
   end
   scenario 'user can select from a list of languages' do
     visit 'responses/new'
