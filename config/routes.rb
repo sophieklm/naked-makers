@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  resources :locations, to: 'locations#create'
+
   resources :responses do
-    resources :locations, to: 'locations#create'
     resources :response_languages
   end
 

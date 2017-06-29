@@ -33,7 +33,7 @@ class ResponsesController < ApplicationController
   end
 
   def create_response_location(response_id, city, languages)
-    redirect_to response_locations_path(response_id: response_id, city: city, languages: languages)
+    redirect_to locations_path(response_id: response_id, city: city, languages: languages)
   end
 
 end
