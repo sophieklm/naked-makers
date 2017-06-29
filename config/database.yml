@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: naked-makers_production
-  username: naked-makers
-  password: <%= ENV['NAKED-MAKERS_DATABASE_PASSWORD'] %>
+  database: finding-links_production
+  username: finding-links
+  password: <%= ENV['FINDING-LINKS_DATABASE_PASSWORD'] %>

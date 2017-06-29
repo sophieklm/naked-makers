@@ -8,8 +8,8 @@ Rails.application.load_tasks
 # run task on staging: bundle exec rake deploy:staging:promote
 # run task on production: bundle exec rake deploy:production:promote
 
-staging_app     = 'naked-makers-staging'
-production_app  = 'naked-makers'
+staging_app     = 'finding-links-staging'
+production_app  = 'finding-links'
 
 namespace :deploy do
   namespace :staging do
