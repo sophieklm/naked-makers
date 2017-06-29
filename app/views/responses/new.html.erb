@@ -13,7 +13,7 @@
         <%= f.text_field :city, class: "form-control" %>
       </div><br/>
       <h3>What languages do you use?</h3>
-      <% @languages.each do |language| %>
+      <% @languages.order(name: :asc).each do |language| %>
       <%= language.name %>
       <%= check_box_tag 'response[languages][]', language.id, false, id: language.id %><br/>
       <% end %>
