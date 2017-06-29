@@ -1,7 +1,7 @@
 <%= render "partials/header" %>
 <div class="container">
   <div class="jumbotron text-center">
-    <h1>Submit your data here</h1>
+    <h1>Submit a response here</h1>
     <% if flash[:notice] %>
       <div class = 'alert alert-danger'><%= flash[:notice]%></div>
     <%end%>
@@ -13,7 +13,6 @@
         <%= f.text_field :city, class: "form-control" %>
       </div><br/>
       <h3>What languages do you use?</h3>
-      <%= f.label "Languages:" %><br/>
       <% @languages.each do |language| %>
       <%= language.name %>
       <%= check_box_tag 'response[languages][]', language.id, false, id: language.id %><br/>
